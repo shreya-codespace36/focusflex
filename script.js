@@ -1,4 +1,4 @@
-/ DOM Elements
+// ---------------- DOM Elements ----------------
 const startBtn = document.getElementById('start-focus');
 const intentSection = document.getElementById('intent-section');
 const timerSection = document.getElementById('timer-section');
@@ -8,7 +8,7 @@ const realityCheck = document.getElementById('reality-check');
 const checkMessage = document.getElementById('check-message');
 const tryAgain = document.getElementById('try-again');
 
-// Reality check messages
+// ---------------- Reality check messages ----------------
 const messages = [
     "Focus or fail! 😼",
     "You said you’d do it, didn’t you? 😏",
@@ -17,19 +17,54 @@ const messages = [
     "Eyes on the prize, not the phone! 📱"
 ];
 
-let timer;
-let timeLeft = 25 * 60; // 25 minutes
+// ---------------- Mood colors ----------------
+const moods = [
+    "mood-1", // fiery
+    "mood-2", // calm
+    "mood-3", // energized
+    "mood-4", // sunny
+    "mood-5"  // playful
+];
+let currentMood = ""; // track current mood class
 
-// Convert seconds to MM:SS
+// ---------------- Timer variables ----------------
+let timer;
+let timeLeft = 25 * 60; // 25 minutes default
+
+// ---------------- Helper Functions ----------------
 function formatTime(sec) {
     const m = Math.floor(sec / 60);
     const s = sec % 60;
     return `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
 }
 
-// Start focus session
+// Show reality check with random mood & message
+function showRealityCheck() {
+    timerSection.classList.add('hidden');
+    realityCheck.classList.remove('hidden');
+
+    // Random reality message
+    checkMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+    // Random mood
+    const mood = moods[Math.floor(Math.random() * moods.length)];
+    if(currentMood) realityCheck.classList.remove(currentMood);
+    realityCheck.classList.add(mood);
+    currentMood = mood;
+
+    // Pop animation
+    realityCheck.classList.remove('show');
+    setTimeout(() => {
+        realityCheck.classList.add('show');
+    }, 50);
+}
+
+// ---------------- Event Listeners ----------------
+
+// Start session
 startBtn.addEventListener('click', () => {
-    if(document.getElementById('intent-input').value === ""){
+    const goal = document.getElementById('intent-input').value.trim();
+    if(goal === ""){
         alert("Type your goal first!");
         return;
     }
@@ -45,9 +80,7 @@ startBtn.addEventListener('click', () => {
 
         if(timeLeft <= 0){
             clearInterval(timer);
-            timerSection.classList.add('hidden');
-            realityCheck.classList.remove('hidden');
-            checkMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+            showRealityCheck();
         }
     }, 1000);
 });
@@ -55,46 +88,11 @@ startBtn.addEventListener('click', () => {
 // End session manually
 endBtn.addEventListener('click', () => {
     clearInterval(timer);
-    timerSection.classList.add('hidden');
-    realityCheck.classList.remove('hidden');
-    checkMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+    showRealityCheck();
 });
 
-// Next reality check
+// Try again / back to input
 tryAgain.addEventListener('click', () => {
     realityCheck.classList.add('hidden');
     intentSection.classList.remove('hidden');
 });
-const moods = [
-    "mood-1", // fiery
-    "mood-2", // calm
-    "mood-3", // energized
-    "mood-4", // sunny
-    "mood-5"  // playful
-];
-
-function showRealityCheck() {
-    realityCheck.classList.remove('hidden');
-    timerSection.classList.add('hidden');
-
-    // Random reality check message
-    checkMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
-
-    // Random mood color
-    const mood = moods[Math.floor(Math.random() * moods.length)];
-    realityCheck.className = ''; // reset classes
-    realityCheck.classList.add(mood);
-}
-
-// Update previous end session / timer zero logic
-endBtn.addEventListener('click', showRealityCheck);
-
-timer = setInterval(() => {
-    timeLeft--;
-    timerDisplay.textContent = formatTime(timeLeft);
-
-    if(timeLeft <= 0){
-        clearInterval(timer);
-        showRealityCheck();
-    }
-}, 1000);
