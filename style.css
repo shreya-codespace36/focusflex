@@ -1,0 +1,94 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body */
+body {
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #00ffff;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px #000;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+/* Intent Section */
+#intent-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+}
+
+#intent-input {
+    width: 80%;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: none;
+}
+
+#start-focus {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #00ffff;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#start-focus:hover {
+    background: #00d4d4;
+}
+
+/* Timer & Reality Check Hidden by Default */
+.hidden {
+    display: none;
+}
+
+/* Timer Section */
+#timer-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#timer {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+}
+
+/* Reality Check Section */
+#reality-check {
+    margin-top: 30px;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+}
