@@ -92,3 +92,15 @@ header p {
     padding: 20px;
     border-radius: 12px;
 }
+/* Mood colors */
+.mood-1 { background: #ff4d6d; color: #fff; } /* fiery focus */
+.mood-2 { background: #6d5cff; color: #fff; } /* calm focus */
+.mood-3 { background: #4dff95; color: #000; } /* energized */
+.mood-4 { background: #ffd54d; color: #000; } /* sunny motivation */
+.mood-5 { background: #ff85e0; color: #000; } /* playful energy */
+
+/* Reality check animation */
+#reality-check {
+    transition: all 0.5s ease-in-out;
+}
+
