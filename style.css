@@ -1,4 +1,4 @@
-/* Basic Reset */
+/* ---------------- Basic Reset ---------------- */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body */
+/* ---------------- Body ---------------- */
 body {
     background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
     color: #fff;
@@ -17,7 +17,7 @@ body {
     padding: 20px;
 }
 
-/* Header */
+/* ---------------- Header ---------------- */
 header {
     text-align: center;
     margin-bottom: 40px;
@@ -35,7 +35,7 @@ header p {
     color: #ddd;
 }
 
-/* Intent Section */
+/* ---------------- Intent Section ---------------- */
 #intent-section {
     background: rgba(255, 255, 255, 0.05);
     padding: 20px;
@@ -66,14 +66,10 @@ header p {
 
 #start-focus:hover {
     background: #00d4d4;
+    transform: scale(1.05);
 }
 
-/* Timer & Reality Check Hidden by Default */
-.hidden {
-    display: none;
-}
-
-/* Timer Section */
+/* ---------------- Timer Section ---------------- */
 #timer-section {
     margin-top: 30px;
     text-align: center;
@@ -85,22 +81,45 @@ header p {
     color: #ffcc00;
 }
 
-/* Reality Check Section */
+/* ---------------- Reality Check Section ---------------- */
 #reality-check {
     margin-top: 30px;
-    background: rgba(255, 0, 0, 0.1);
     padding: 20px;
     border-radius: 12px;
+    background: rgba(255, 0, 0, 0.1);
+    transition: all 0.5s ease-in-out;
+    transform: scale(0.9);
+    opacity: 0;
 }
-/* Mood colors */
+
+/* Show pop animation */
+#reality-check.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* ---------------- Mood Colors ---------------- */
 .mood-1 { background: #ff4d6d; color: #fff; } /* fiery focus */
 .mood-2 { background: #6d5cff; color: #fff; } /* calm focus */
 .mood-3 { background: #4dff95; color: #000; } /* energized */
 .mood-4 { background: #ffd54d; color: #000; } /* sunny motivation */
 .mood-5 { background: #ff85e0; color: #000; } /* playful energy */
 
-/* Reality check animation */
-#reality-check {
-    transition: all 0.5s ease-in-out;
+/* ---------------- Buttons ---------------- */
+#end-session, #try-again {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
+#end-session:hover, #try-again:hover {
+    transform: scale(1.05);
+    background: #00ffff;
+    color: #000;
+}
+
+/* ---------------- Hidden Class ---------------- */
+.hidden { display: none; }
