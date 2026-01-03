@@ -65,3 +65,37 @@ tryAgain.addEventListener('click', () => {
     realityCheck.classList.add('hidden');
     intentSection.classList.remove('hidden');
 });
+const moods = [
+    "mood-1", // fiery
+    "mood-2", // calm
+    "mood-3", // energized
+    "mood-4", // sunny
+    "mood-5"  // playful
+];
+
+function showRealityCheck() {
+    realityCheck.classList.remove('hidden');
+    timerSection.classList.add('hidden');
+
+    // Random reality check message
+    checkMessage.textContent = messages[Math.floor(Math.random() * messages.length)];
+
+    // Random mood color
+    const mood = moods[Math.floor(Math.random() * moods.length)];
+    realityCheck.className = ''; // reset classes
+    realityCheck.classList.add(mood);
+}
+
+// Update previous end session / timer zero logic
+endBtn.addEventListener('click', showRealityCheck);
+
+timer = setInterval(() => {
+    timeLeft--;
+    timerDisplay.textContent = formatTime(timeLeft);
+
+    if(timeLeft <= 0){
+        clearInterval(timer);
+        showRealityCheck();
+    }
+}, 1000);
+
