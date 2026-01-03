@@ -1,4 +1,4 @@
-// DOM Elements
+/ DOM Elements
 const startBtn = document.getElementById('start-focus');
 const intentSection = document.getElementById('intent-section');
 const timerSection = document.getElementById('timer-section');
@@ -98,4 +98,3 @@ timer = setInterval(() => {
         showRealityCheck();
     }
 }, 1000);
-
